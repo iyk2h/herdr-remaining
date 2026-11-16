@@ -1,8 +1,11 @@
 # AI commands
 
-Read the host file `~/.config/herdr-app/AGENTS.md` before changes to the installation.
+Before installation changes, read the host file `~/.config/herdr-app/AGENTS.md`.
 [Account settings](ACCOUNTS.md) describes discovery and credential access.
 [Themes](THEMES.md) describes JSON themes and display constraints.
+
+Replace `<installed-mod-folder>` with the installed Remaining folder.
+The default folder is `~/.config/herdr-app/mods/remaining`.
 
 ## Diagnose the installation
 
@@ -21,20 +24,19 @@ Exit codes are `0` for healthy, `1` for warnings, and `2` for errors.
 The diagnostic makes no provider request and reads no credential contents.
 It does not access Keychain, change state, or prove that a login remains valid.
 It omits account names, emails, IDs, paths, tokens, raw errors, and limit percentages.
-Theme errors use counts. The theme validation command gives local filenames and fields.
+Theme errors use counts. [Theme validation](THEMES.md#add-a-theme) gives local filenames and fields.
 
 **Copy diagnostics** applies an additional field allowlist before the clipboard write.
-Valid warning and error reports also copy.
+The button also copies reports with warnings or errors.
 Invalid output leaves the clipboard unchanged.
 The button sends no report to another service.
 
-For a new provider query:
+For a new query with the saved account pauses:
 
-1. Start `launch.sh --refresh` locally.
+1. Select **Refresh** in the widget.
 2. Do the diagnostic again.
 
-The refresh output contains a private account snapshot.
-Do not publish that output.
+For an AI recommendation with a new query, use [Request fresh data](#request-fresh-data).
 
 ## Recommend an account
 
@@ -61,7 +63,7 @@ Exit code `2` means a settings, runtime, or argument error.
 The ranking uses these values, in order:
 
 1. The largest minimum remaining percentage across reported general limits.
-2. The earliest future reset of that minimum limit.
+2. The earliest future reset among windows with that minimum percentage.
 3. The saved account order.
 
 A missing `5h` window does not exclude an account.
@@ -73,7 +75,8 @@ This ranking does not predict task capacity or model access.
 Accounts do not qualify in these states:
 
 - A monitoring pause or explicit usage block.
-- A failed query, incompatible cache source, or invalid general limit.
+- A failed query or incompatible cache source.
+- Missing or invalid general limits, or an exhausted general or selected model window.
 - A future fetch timestamp or a sample at least one selected refresh interval old.
 - An elapsed reset timestamp.
 
@@ -82,7 +85,7 @@ Accounts do not qualify in these states:
 Add `--refresh` to the recommendation command:
 
 ```sh
-launch.sh --recommend --provider codex --refresh
+/bin/sh <installed-mod-folder>/launch.sh --recommend --provider codex --refresh
 ```
 
 This command queries all monitored accounts through the existing collector, including other providers.
@@ -120,7 +123,7 @@ Cache schema 3 requires a fresh read after an update from older model metadata.
 1. Select **Copy settings**.
 2. Save the clipboard JSON in a local file.
 
-AI assistants can export the same format with `launch.sh --settings-backup`.
+AI assistants can export the same format with `/bin/sh <installed-mod-folder>/launch.sh --settings-backup`.
 This command reads local state only.
 The backup contains account IDs, display order, pauses, theme ID, and refresh interval.
 It excludes credentials, emails, directories, snapshots, theme files, and unrelated Herdr settings.
@@ -135,7 +138,8 @@ To restore a backup:
 Restore validates the size, version, fields, and values before it writes only `remaining.preferences`.
 The size limit is 8 KiB.
 Invalid input leaves settings unchanged.
-Missing accounts are skipped.
+
+Restore skips missing accounts.
 New accounts keep their pause state and follow the restored order.
 Temporarily absent paused accounts remain paused.
 A merge with more than 20 pause entries fails without changes.
@@ -143,5 +147,5 @@ A merge with more than 20 pause entries fails without changes.
 If the saved theme is absent, restore retains the current theme or uses Bars.
 Restore does not install theme files or CLI logins.
 It does not change the clipboard.
-The buttons wait during a diagnostic copy.
+The view disables **Copy settings** and **Restore settings** during a diagnostic copy.
 Only changes to monitoring or refresh preferences trigger a provider query.

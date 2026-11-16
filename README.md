@@ -15,6 +15,7 @@ The requirements are Herdr, Node.js 18 or newer, and existing Claude Code or Cod
 The Codex CLI must support `--no-daemon app-server` and account RPCs.
 We tested the mod on macOS. Linux credential paths exist, but we did not test them with live accounts.
 The shell launcher does not support Windows.
+These steps use the default Herdr home, `~/.config/herdr-app`.
 
 1. Read `~/.config/herdr-app/AGENTS.md`.
 2. Download the source:
@@ -62,8 +63,9 @@ The shell launcher does not support Windows.
 
 9. Examine the sidebar in Herdr.
 
-The installer protects existing files. It does not replace your layout.
-Existing Remaining installations require the [migration procedure](docs/maintenance.md#existing-installations).
+The installer leaves your layout intact.
+Legacy installations require [adoption](docs/maintenance.md#existing-installations).
+Managed installations use the [update procedure](docs/maintenance.md#update).
 If another mod uses the name `remaining`, keep that mod.
 Ask your assistant to adapt the installation paths.
 
@@ -78,14 +80,13 @@ Ask your assistant to adapt the installation paths.
 | Right-click an account | Opens the official usage page. The browser can use a different login. |
 | Hover over an account | Shows exact reset times, account identity, and query details. |
 
-Herdr commands are `remaining.refresh`, `remaining.settings`, `remaining.bars`, and `remaining.rings`.
+Optional keybinding actions are `remaining.refresh`, `remaining.settings`, `remaining.bars`, and `remaining.rings`.
 The mod adds no default keybindings or limit notifications.
 
 ## Limits and privacy
 
 If a monitored account reports a window, the matching `5h` or `7d` column appears.
 A missing value does not mean zero or unlimited usage.
-The bar always shows weekly remaining capacity.
 
 The mod stores account identities and limits in a local cache.
 It adds no telemetry and starts no model conversation.

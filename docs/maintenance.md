@@ -12,8 +12,9 @@ For runtime changes:
 2. Do the native checks with `npm run check:native`.
 3. For UI changes, examine a real Herdr frame.
 
-The native helper covers 25 example states under `.local/native`.
-The `--case <name>` argument selects one state.
+Native checks require Python 3.9 or newer and `~/.local/bin/herdr-app`.
+The helper covers 25 example states under `.local/native`.
+Select one state with `npm run check:native -- --case bars`.
 Native checks cannot prove layout, paint, or later interactions.
 
 For a repository preview:
@@ -22,7 +23,7 @@ For a repository preview:
 2. Start `npm run preview`.
 3. Examine `preview.png` before publication.
 
-The preview helper uses example accounts and closes its own popup.
+The preview helper requires macOS. It uses example accounts and closes its own popup.
 The full-window image stays under ignored `.local/`.
 Real account screenshots must stay outside Git and release packages.
 

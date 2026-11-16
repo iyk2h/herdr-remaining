@@ -43,7 +43,8 @@ The schema supplies defaults for absent fields.
 JSON themes do not execute commands or import code.
 A new arrangement requires a renderer change and a schema extension.
 
-The loader accepts at most 50 JSON files. Each file has a 16 KiB limit.
+The loader reads the first 50 JSON files in filename order.
+Each file has a 16 KiB limit.
 The loader ignores symbolic links.
 Colors accept `profile`, `#RRGGBB`, or the semantic tokens in the schema.
 Semantic tokens adapt to the app theme. Explicit colors stay fixed.

@@ -23,7 +23,7 @@ For code changes:
 For documentation changes:
 
 - Write English with short sentences, active voice, and consistent terms.
-- Keep installation in README, account access in ACCOUNTS, themes in THEMES, and AI commands in AI.
+- Keep each procedure in its guide from the README documentation table.
 - Keep release procedures in the maintenance guide.
 - Link to the relevant guide instead of repeating its procedure.
 - Preserve command names, identifiers, and quoted UI labels.

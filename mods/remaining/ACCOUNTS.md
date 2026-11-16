@@ -60,7 +60,7 @@ The collector sends only initialization, account, and rate-limit RPCs.
 It terminates its own child process after the query.
 The Codex CLI manages its authentication state.
 
-Credentials stay in memory during collection.
+The Claude token stays in memory during the query.
 The mod does not print credentials or copy them into its folder or snapshots.
 An account identity change or an unverified login clears old limit values.
 

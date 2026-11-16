@@ -2,12 +2,11 @@
 
 ## 1.1.0
 
-The version adds these features:
+This version adds these features:
 
 - Release packages include checksums and native validation.
 - Updates preserve user files and refuse changed managed code.
-- Rollback restores managed code and retains current settings.
-- A journal supports recovery after an interrupted directory replacement.
+- Rollback and recovery protect settings during interrupted updates.
 - Model recommendations require explicit reported IDs or names.
 - The repository includes a recipe and a preview with example accounts.
 
