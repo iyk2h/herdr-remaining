@@ -1,0 +1,5 @@
+[
+  { "id": "claude", "provider": "claude", "label": "Claude", "tint": "ansi3" },
+  { "id": "work", "provider": "codex", "label": "Work · Codex", "home": "~/.codex-work", "tint": "ansi2" },
+  { "id": "personal", "provider": "codex", "label": "Personal · Codex", "home": "~/.codex", "tint": "ansi4" }
+]

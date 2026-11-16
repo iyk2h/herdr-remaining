@@ -1,0 +1,6 @@
+{
+  "$schema": "../theme-schema.json",
+  "id": "bars",
+  "name": "Bars",
+  "layout": "bars"
+}

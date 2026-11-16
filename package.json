@@ -1,0 +1,17 @@
+{
+  "name": "herdr-remaining",
+  "version": "1.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Compact Claude and Codex subscription limits for the Herdr sidebar",
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "check:native": "python3 -u tools/check-native.py",
+    "build:release": "node tools/releases.mjs build",
+    "release:status": "node tools/releases.mjs status",
+    "release:rollback": "node tools/releases.mjs rollback",
+    "preview": "python3 tools/capture-preview.py"
+  },
+  "engines": { "node": ">=18" }
+}

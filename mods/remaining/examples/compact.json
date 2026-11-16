@@ -1,0 +1,8 @@
+{
+  "$schema": "../theme-schema.json",
+  "id": "compact",
+  "name": "Compact",
+  "layout": "bars",
+  "sizes": { "font": 11, "rowPadding": 1, "bar": 2 },
+  "colors": { "fill": "accent", "secondary": "dim" }
+}

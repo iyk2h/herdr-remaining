@@ -1,0 +1,13 @@
+**/accounts.json
+**/.credentials.json
+**/auth.json
+**/.env*
+node_modules/
+.local/
+dist/
+data/
+*.log
+*.error
+.DS_Store
+gpui-kit.d.ts
+jsconfig.json

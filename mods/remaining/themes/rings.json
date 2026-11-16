@@ -1,0 +1,6 @@
+{
+  "$schema": "../theme-schema.json",
+  "id": "rings",
+  "name": "Rings",
+  "layout": "rings"
+}
