@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.1.1
+
+This version corrects these problems:
+
+- CLI modes return JSON through directory aliases and paths with spaces.
+- The preview includes its own icons and rings before the widget installation.
+- Invalid native case names fail before file changes or native checks.
+- Developer tests cover both helpers without app access.
+
 ## 1.1.0
 
 This version adds these features:

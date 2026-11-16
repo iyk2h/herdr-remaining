@@ -39,7 +39,7 @@ These steps use the default Herdr home, `~/.config/herdr-app`.
 5. Install the package from the reported folder:
 
    ```sh
-   node tools/releases.mjs install --release /absolute/path/to/dist/<release-id>
+   node tools/releases.mjs install --release "/absolute/path/to/dist/<release-id>"
    ```
 
 6. If you use a shipped layout, clone that layout before the next step.

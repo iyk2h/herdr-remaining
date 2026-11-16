@@ -4,15 +4,15 @@ Before installation changes, read the host file `~/.config/herdr-app/AGENTS.md`.
 [Account settings](ACCOUNTS.md) describes discovery and credential access.
 [Themes](THEMES.md) describes JSON themes and display constraints.
 
-Replace `<installed-mod-folder>` with the installed Remaining folder.
-The default folder is `~/.config/herdr-app/mods/remaining`.
+Replace `<installed-mod-folder>` with an absolute folder path.
+The default folder is `$HOME/.config/herdr-app/mods/remaining`.
 
 ## Diagnose the installation
 
 1. Start the offline diagnostic:
 
    ```sh
-   /bin/sh <installed-mod-folder>/launch.sh --diagnose
+   /bin/sh "<installed-mod-folder>/launch.sh" --diagnose
    ```
 
 2. Examine the report codes and suggested actions.
@@ -43,7 +43,7 @@ For an AI recommendation with a new query, use [Request fresh data](#request-fre
 1. Start the recommendation command:
 
    ```sh
-   /bin/sh <installed-mod-folder>/launch.sh --recommend --provider codex
+   /bin/sh "<installed-mod-folder>/launch.sh" --recommend --provider codex
    ```
 
 2. Examine `recommendedId` in each provider group.
@@ -85,7 +85,7 @@ Accounts do not qualify in these states:
 Add `--refresh` to the recommendation command:
 
 ```sh
-/bin/sh <installed-mod-folder>/launch.sh --recommend --provider codex --refresh
+/bin/sh "<installed-mod-folder>/launch.sh" --recommend --provider codex --refresh
 ```
 
 This command queries all monitored accounts through the existing collector, including other providers.
@@ -123,7 +123,7 @@ Cache schema 3 requires a fresh read after an update from older model metadata.
 1. Select **Copy settings**.
 2. Save the clipboard JSON in a local file.
 
-AI assistants can export the same format with `/bin/sh <installed-mod-folder>/launch.sh --settings-backup`.
+AI assistants can export the same format with `/bin/sh "<installed-mod-folder>/launch.sh" --settings-backup`.
 This command reads local state only.
 The backup contains account IDs, display order, pauses, theme ID, and refresh interval.
 It excludes credentials, emails, directories, snapshots, theme files, and unrelated Herdr settings.

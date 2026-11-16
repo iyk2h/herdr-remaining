@@ -8,10 +8,6 @@ PROJECT = Path(__file__).resolve().parent.parent
 ROOT = PROJECT / 'mods/remaining'
 TESTS = PROJECT / '.local/native'
 APP = str(Path.home() / '.local/bin/herdr-app')
-parser = argparse.ArgumentParser(description='Check synthetic Remaining native states')
-parser.add_argument('--case', action='append', default=[], help='Check only this named case; repeat to select more')
-selected = set(parser.parse_args().case)
-checked = set()
 
 def fixture(count=3):
     rows = []
@@ -23,7 +19,7 @@ def fixture(count=3):
                                  {'label': 'Weekly', 'minutes': 10080, 'used': [40, 75, 58][index % 3], 'resetAt': 2000000000000}]})
     return {'checkedAt': 1000, 'accounts': rows, 'profiles': rows}
 
-for name, width, settings, count, appearance in [('bars', 268, False, 3, 'bars'), ('rail', 76, False, 3, 'bars'),
+CASES = [('bars', 268, False, 3, 'bars'), ('rail', 76, False, 3, 'bars'),
                                       ('medium', 230, False, 3, 'bars'), ('rings', 268, False, 3, 'rings'),
                                       ('bars-weekly', 268, False, 3, 'bars'), ('rings-weekly', 268, False, 3, 'rings'),
                                       ('bars-mixed', 268, False, 3, 'bars'), ('rings-mixed', 268, False, 3, 'rings'),
@@ -35,10 +31,14 @@ for name, width, settings, count, appearance in [('bars', 268, False, 3, 'bars')
                                       ('settings-copy-working', 360, True, 3, 'bars'), ('settings-copy-copied', 360, True, 3, 'bars'),
                                       ('settings-copy-failed', 360, True, 3, 'bars'), ('settings-backup-copied', 360, True, 3, 'bars'),
                                       ('settings-restore-restored', 360, True, 3, 'bars'), ('settings-restore-warning', 360, True, 3, 'bars'),
-                                      ('settings-restore-failed', 360, True, 3, 'bars')]:
+                                      ('settings-restore-failed', 360, True, 3, 'bars')]
+parser = argparse.ArgumentParser(description='Check synthetic Remaining native states')
+parser.add_argument('--case', action='append', choices=[case[0] for case in CASES], default=[], help='Check only this named case; repeat to select more')
+selected = set(parser.parse_args().case)
+
+for name, width, settings, count, appearance in CASES:
     if selected and name not in selected:
         continue
-    checked.add(name)
     dest = TESTS / name
     shutil.copytree(ROOT, dest, dirs_exist_ok=True)
     text = (dest / 'main.js').read_text()
@@ -74,5 +74,3 @@ for name, width, settings, count, appearance in [('bars', 268, False, 3, 'bars')
     if result.returncode:
         raise RuntimeError(f'{name}: {result.stdout}\n{result.stderr}')
     print(f'{name}: native check passed')
-if selected - checked:
-    parser.error('Unknown native case: ' + ', '.join(sorted(selected - checked)))

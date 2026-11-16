@@ -2,6 +2,8 @@
 
 ## Add a theme
 
+Replace `<installed-mod-folder>` with its absolute path.
+
 1. Read `theme-schema.json`.
 2. Examine a file in `themes/` and `examples/compact.json`.
 3. Add `themes/<id>.json` with a unique lowercase ID that matches the filename.
@@ -10,11 +12,11 @@
 6. Validate the theme files:
 
    ```sh
-   /bin/sh <installed-mod-folder>/launch.sh --themes --check
+   /bin/sh "<installed-mod-folder>/launch.sh" --themes --check
    ```
 
 7. Select the new theme under **Appearance** in Settings.
-8. Do the native check with `herdr-app check <installed-mod-folder>`.
+8. Do the native check with `herdr-app check "<installed-mod-folder>"`.
 9. Examine the widget in Herdr.
 
 Theme validation reads local files only. Errors identify the file and field.

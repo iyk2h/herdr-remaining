@@ -1,6 +1,6 @@
 #!/bin/sh
 set -eu
-mod_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+mod_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd -P)
 target="$mod_dir/usage.mjs"
 case "${1-}" in
   --themes) target="$mod_dir/themes.mjs"; shift ;;
