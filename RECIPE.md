@@ -1,6 +1,8 @@
 # Remaining
 
 A small native panel for available Claude and Codex subscription capacity.
+
+![Remaining](preview.png)
 The [README](README.md) contains the overview, preview, and installation procedure.
 
 ## What you see
